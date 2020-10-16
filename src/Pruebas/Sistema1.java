@@ -44,26 +44,12 @@ public class Sistema1 {
                             PasajeroPrimeraClase p2 = new PasajeroPrimeraClase(b1);
                             System.out.println("Desea documentar una maleta: ");
                             respuesta = opcion.next();
-                             if (respuesta.toUpperCase().equals("SI") == true){
-                                System.out.println("Peso de la maleta: ");
-                                double peso = opcion.nextDouble();
-                                Maleta m1 = new Maleta(peso);
-                                p2.documentarMaleta(m1);
-                                System.out.println(p2.getMaletas()); //Pendiente descubrir como imprimir arrays
-                            }
+                            Sistema1.guardarMaletas((PasajeroPrimeraClase)p2);
                             break;
                         case "EJECUTIVA":
                             b1 = Sistema1.crearBoletoNacional(EnumClase.EJECUTIVO);
                             PasajeroEjecutivo p3 = new PasajeroEjecutivo(b1);
-                            System.out.println("Desea documentar una maleta: ");
-                            respuesta = opcion.next();
-                             if (respuesta.toUpperCase().equals("SI") == true){
-                                System.out.println("Peso de la maleta: ");
-                                double peso = opcion.nextDouble();
-                                Maleta m1 = new Maleta(peso);
-                                p3.documentarMaleta(m1);
-                                System.out.println(p3.getMaletas()); //Pendiente descubrir como imprimir arrays
-                            }
+                            Sistema1.guardarMaletas((PasajeroEjecutivo)p3);
                             break;
                         default:
                             System.out.println("Opcion Invalida");
@@ -98,7 +84,18 @@ public class Sistema1 {
         System.out.println("Ingrese curp: ");
         String curp = opcion.next();
         BoletoNacional b1 = new BoletoNacional(nombrePasajero,edadPasajero,generoPasajero,clase,numAsiento,numVuelo,aerolinea,destino,curp);
-        
-        return b1;
+         return b1;
+    }
+    public static void guardarMaletas(Pasajero p1) throws Exception{
+        Scanner opcion = new Scanner(System.in);
+        String respuesta;
+        System.out.println("Desea documentar una maleta: ");
+        respuesta = opcion.next();
+        if (respuesta.toUpperCase().equals("SI") == true){
+            System.out.println("Peso de la maleta: ");
+            double peso = opcion.nextDouble();
+            Maleta m1 = new Maleta(peso);
+            p1.documentarMaleta(m1);
+        }
     }
 }

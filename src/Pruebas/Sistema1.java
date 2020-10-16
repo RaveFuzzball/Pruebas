@@ -149,7 +149,7 @@ public class Sistema1 {
          return b1;
     }
     public static BoletoInternacional crearBoletoInternacional(EnumClase clase){
-        String respuesta = null;
+        String respuesta;
         Scanner opcion = new Scanner(System.in);
         System.out.println("Ingrese nombre: ");
         String nombrePasajero = opcion.next();
